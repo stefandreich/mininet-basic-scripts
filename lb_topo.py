@@ -32,8 +32,7 @@ from mininet.node import OVSSwitch, Controller, RemoteController
 from time import sleep
 
 
-class SingleSwitchTopo(Topo):
-    "Single switch connected to n hosts."
+class LoadBalancingTopo(Topo):
     def build(self):
         s1 = self.addSwitch('s1', protocols='OpenFlow13')
         s2 = self.addSwitch('s2', protocols='OpenFlow13')
@@ -57,7 +56,7 @@ class SingleSwitchTopo(Topo):
 
 if __name__ == '__main__':
     setLogLevel('info')
-    topo = SingleSwitchTopo()
+    topo = LoadBalancingTopo()
     c1 = RemoteController('c1', ip='127.0.0.1')
     net = Mininet(topo=topo, controller=c1)
     net.start()
